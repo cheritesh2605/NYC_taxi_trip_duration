@@ -1,0 +1,7 @@
+data.shape
+data.columns
+data.dtypes
+data.head()
+data.isnull().sum()
+data.nunique()
+data.describe()
