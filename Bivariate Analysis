@@ -1,0 +1,55 @@
+Trip Duration per Vendor :
+sns.barplot(y='trip_duration',x='vendor_id',data=data,estimator=np.mean)
+
+Trip Duration per Store and Forward Flag:
+sns.catplot(y='trip_duration',x='store_and_fwd_flag',data=data,kind="strip")
+
+Trip Duration per passenger count:
+sns.catplot(y='trip_duration',x='passenger_count',data=data,kind="strip")
+
+Trip Duration per hour:
+sns.lineplot(x='pickup_hour',y='trip_duration',data=data)
+
+Trip Duration per time of day:
+sns.lineplot(x='pickup_timeofday',y='trip_duration',data=data)
+
+Trip Duration per Day of Week:
+sns.lineplot(x='pickup_day_no',y='trip_duration',data=data)
+
+Trip Duration per month:
+sns.lineplot(x='pickup_month',y='trip_duration',data=data)
+
+Distance and Vendor:
+sns.barplot(y='distance',x='vendor_id',data=data,estimator=np.mean)
+
+Distance and Store and Forward Flag:
+sns.catplot(y='distance',x='store_and_fwd_flag',data=data,kind="strip")
+
+Distance per passenger count:
+sns.catplot(y='distance',x='passenger_count',data=data,kind="strip")
+
+Distance per day of week:
+sns.lineplot(x='pickup_day_no',y='distance',data=data)
+
+Distance per hour of day:
+sns.lineplot(x='pickup_hour',y='distance',data=data)
+
+Distance per time of day:
+sns.lineplot(x='pickup_timeofday',y='distance',data=data)
+
+Distance per month:
+sns.lineplot(x='pickup_month',y='distance',data=data)
+
+Passenger Count and Vendor id:
+sns.barplot(y='passenger_count',x='vendor_id',data=data)
+
+Trip Duration and Distance:
+sns.relplot(y=data.distance,x='trip_duration',data=data)
+
+data.info()
+data.isnull().sum()
+data['tpep_pickup_datetime'] = pd.to_datetime(yellow_taxi_data['tpep_pickup_datetime'], fo
+data['dropoff_timeofday'] = pd.to_datetime(yellow_taxi_data['tpep_dropoff_datetime'], form
+data['trip_duration'] = (yellow_taxi_data['tpep_dropoff_datetime'] -
+data['tpep_pickup_datetime']).dt.secondsyellow_taxi_data['PULocationID'].fillna(-1, inplace
+data['DOLocationID'].fillna(-1, inplace = True)
