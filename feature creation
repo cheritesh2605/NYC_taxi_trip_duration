@@ -1,0 +1,26 @@
+data['pickup_datetime']=pd.to_datetime(data['pickup_datetime'])
+data['dropoff_datetime']=pd.to_datetime(data['dropoff_datetime'])
+data['pickup_day']=data['pickup_datetime'].dt.day_name()
+data['dropoff_day']=data['dropoff_datetime'].dt.day_name()
+data['pickup_day_no']=data['pickup_datetime'].dt.weekday
+data['dropoff_day_no']=data['dropoff_datetime'].dt.weekday
+data['pickup_hour']=data['pickup_datetime'].dt.hour
+data['dropoff_hour']=data['dropoff_datetime'].dt.hour
+data['pickup_month']=data['pickup_datetime'].dt.month
+data['dropoff_month']=data['dropoff_datetime'].dt.month
+def time_of_day(x):
+if x in range(6,12):
+return 'Morning'
+elif x in range(12,16):
+return 'Afternoon'
+elif x in range(16,22):
+return 'Evening'
+else:
+return 'Late night'
+data['pickup_timeofday']=data['pickup_hour'].apply(time_of_day)
+data['dropoff_timeofday']=data['dropoff_hour'].apply(time_of_day)
+from geopy.distance import great_circle
+def cal_distance(pickup_lat,pickup_long,dropoff_lat,dropoff_long):
+start_coordinates=(pickup_lat,pickup_long)
+stop_coordinates=(dropoff_lat,dropoff_long)
+return great_circle(start_coordinates,stop_coordinates).km
