@@ -1,0 +1,51 @@
+Target variable :
+sns.histplot(data['trip_duration'],kde=False,bins=20)
+sns.boxplot(data['trip_duration'])
+data['trip_duration'].sort_values(ascending=False)
+data.drop(data[data['trip_duration'] == 1939736].index, inplace = True)
+
+Vendor id:
+sns.countplot(x='vendor_id',data=data)
+
+Passenger Count:
+data.passenger_count.value_counts()
+sns.countplot(x='passenger_count',data=data)
+data=data[data['passenger_count']!=0]
+data=data[data['passenger_count']<=6]
+
+Store and Forward Flag:
+data['store_and_fwd_flag'].value_counts(normalize=True)
+
+Distance:
+data['distance'].value_counts()
+
+Trips per Day:
+figure,(ax1,ax2)=plt.subplots(ncols=2,figsize=(20,5))
+ax1.set_title('Pickup Days')
+ax=sns.countplot(x="pickup_day",data=data,ax=ax1)
+ax2.set_title('Dropoff Days')
+ax=sns.countplot(x="dropoff_day",data=data,ax=ax2)
+
+
+Trips per Hour:
+figure,(ax9,ax10)=plt.subplots(ncols=2,figsize=(20,5))
+ax9.set_title('Pickup Days')
+ax=sns.countplot(x="pickup_hour",data=data,ax=ax9)
+ax10.set_title('Dropoff Days')
+ax=sns.countplot(x="dropoff_hour",data=data,ax=ax10)
+
+
+Trips per Time of Day:
+figure,(ax3,ax4)=plt.subplots(ncols=2,figsize=(20,5))
+ax3.set_title('Pickup Time of Day')
+ax=sns.countplot(x="pickup_timeofday",data=data,ax=ax3)
+ax4.set_title('Dropoff Time of Day')
+ax=sns.countplot(x="dropoff_timeofday",data=data,ax=ax4)
+
+Trips per month:
+figure,(ax11,ax12)=plt.subplots(ncols=2,figsize=(20,5))
+ax11.set_title('Pickup Month')
+ax=sns.countplot(x="pickup_month",data=data,ax=ax11)
+ax12.set_title('Dropoff Month')
+ax=sns.countplot(x="dropoff_month",data=data,ax=ax12)
+
