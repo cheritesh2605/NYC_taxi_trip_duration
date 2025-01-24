@@ -1,0 +1,1 @@
+data=pd.read_csv("nyc_taxi_trip_duration.csv")
